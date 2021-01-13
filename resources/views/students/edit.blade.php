@@ -38,26 +38,44 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Roll No</label>
                     <input type="number" class="form-control" name="roll_no" value="{{$student->roll_no ?? ''}}" placeholder="Enter Roll No">
+                    @error('roll_no')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Name</label>
                     <input type="text" class="form-control" name="name" value="{{$student->name ?? ''}}" placeholder="Enter Name">
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Enrollment</label>
                     <input type="text" class="form-control" name="enrollment_no" value="{{$student->enrollment_no ?? ''}}" placeholder="Enter Enrollment">
+                    @error('enrollment_no')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
                     <input type="email" class="form-control" name="email" value="{{$student->email ?? ''}}" placeholder="Enter Email">
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Mobile</label>
                     <input type="text" class="form-control" name="mobile" value="{{$student->mobile ?? ''}}" placeholder="Enter Mobile">
+                    @error('mobile')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">City</label>
                     <input type="text" class="form-control" name="city" value="{{$student->city ?? ''}}" placeholder="Enter City">
+                    @error('city')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>                  
                 </div>
                 <!-- /.card-body -->

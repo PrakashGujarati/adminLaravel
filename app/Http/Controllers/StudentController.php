@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Student;
 
 class StudentController extends Controller
 {
@@ -14,8 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-
-        $students = DB::table('students')->get();
+        $students = Student::where('city',"Rajkot")->orderBy('id', 'asc')->get();//DB::table('students')->get();
         return view('students.view',compact('students'));
     }
 
@@ -37,15 +37,35 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {      
-        
-        $flag = DB::table('students')->insert([
+        $request->validate([
+            'enrollment_no' => "required",
+            'name' => "required",
+            'roll_no' => "required | numeric",
+            'email' => "required",
+            'mobile' => "required",
+            'city' => "required"]);
+
+        //return $request->all();
+        //$flag = Student::create($request->all());
+
+        $student = new Student;
+        $student->enrollment_no = $request->enrollment_no;
+        $student->name = $request->name;
+        $student->roll_no = $request->roll_no;
+        $student->email = $request->email;
+        $student->mobile = $request->mobile;
+        $student->city = 'Rajkot';
+        $flag = $student->save();
+
+
+        /*DB::table('students')->insert([
             'roll_no'=>$request->roll_no,
             'name'=>$request->name,
             'enrollment_no'=>$request->enrollment_no,
             'email'=>$request->email,
             'mobile'=>$request->mobile,
             'city'=>$request->city
-        ]);
+        ]);*/
 
         if($flag)
         {
@@ -75,7 +95,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = DB::table('students')->where('id',$id)->first();
+        $student = Student::find($id);//DB::table('students')->where('id',$id)->first();
         return view('students.edit',compact('student'));
     }
 
@@ -88,14 +108,33 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $flag = DB::table('students')->where('id',$id)->update([
+        $request->validate([
+            'enrollment_no' => "required",
+            'name' => "required",
+            'roll_no' => "required | numeric",
+            'email' => "required",
+            'mobile' => "required",
+            'city' => "required"]);
+            
+        /*$flag = DB::table('students')->where('id',$id)->update([
             'roll_no'=>$request->roll_no,
             'name'=>$request->name,
             'enrollment_no'=>$request->enrollment_no,
             'email'=>$request->email,
             'mobile'=>$request->mobile,
             'city'=>$request->city
-        ]);
+        ]);*/
+
+        /*$student = Student::where('id',$id)->first();
+        $student->enrollment_no = $request->enrollment_no;
+        $student->name = $request->name;
+        $student->roll_no = $request->roll_no;
+        $student->email = $request->email;
+        $student->mobile = $request->mobile;
+        $student->city = $request->city;
+        $flag = $student->save();*/
+
+        $flag = Student::find($id)->update($request->all());
 
         if($flag)
         {
@@ -114,7 +153,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $flag = DB::table('students')->where('id',$id)->delete();
+        $flag = Student::find($id)->delete();
+        //DB::table('students')->where('id',$id)->delete();
 
         if($flag)
         {
