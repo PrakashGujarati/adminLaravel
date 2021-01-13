@@ -14,6 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
+
         $students = DB::table('students')->get();
         return view('students.view',compact('students'));
     }
@@ -35,7 +36,8 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {       
+    {      
+        
         $flag = DB::table('students')->insert([
             'roll_no'=>$request->roll_no,
             'name'=>$request->name,
