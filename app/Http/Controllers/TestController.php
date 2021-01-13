@@ -9,8 +9,8 @@ class TestController extends Controller
 {
     public function index()
     {
-
-        return view('form');
+        return dirname(__FILE__);
+        //return view('form');
         //1. Retrive all records
         //$orders = DB::table('orders')->get();
         
