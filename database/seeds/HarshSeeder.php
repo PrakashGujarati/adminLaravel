@@ -12,8 +12,8 @@ class HarshSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('students')->insert(["name"=>"Harsh","enrollment_no"=>19090123,"roll_no"=>1,"mobile"=>"9898598985","email"=>"rutvi@gmail.com","city"=>"rajkot","country"=>"india"]);
-        DB::table('students')->insert(["name"=>"Parth","enrollment_no"=>19090123,"roll_no"=>1,"mobile"=>"9898598985","email"=>"rutvi@gmail.com","city"=>"rajkot","country"=>"india"]);
+        DB::table('students')->insert(["name"=>"Harsh","enrollment_no"=>19090123,"roll_no"=>1,"mobile"=>"9898598985","email"=>"rutvi@gmail.com","city"=>"rajkot"]);
+        DB::table('students')->insert(["name"=>"Parth","enrollment_no"=>19090123,"roll_no"=>1,"mobile"=>"9898598985","email"=>"rutvi@gmail.com","city"=>"rajkot"]);
         
     }
 }
