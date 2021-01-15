@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Student;
+use App\City;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::where('city',"Rajkot")->orderBy('id', 'asc')->get();//DB::table('students')->get();
+        $students = Student::with('city')->orderBy('id', 'asc')->get();//DB::table('students')->get();
         return view('students.view',compact('students'));
     }
 
@@ -26,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.add'); 
+        $cities = City::all();
+        return view('students.add',compact('cities')); 
     }
 
     /**
@@ -43,7 +45,7 @@ class StudentController extends Controller
             'roll_no' => "required | numeric",
             'email' => "required",
             'mobile' => "required",
-            'city' => "required"]);
+            'city_id' => "required"]);
 
         //return $request->all();
         //$flag = Student::create($request->all());
@@ -54,7 +56,7 @@ class StudentController extends Controller
         $student->roll_no = $request->roll_no;
         $student->email = $request->email;
         $student->mobile = $request->mobile;
-        $student->city = 'Rajkot';
+        $student->city_id = $request->city_id;
         $flag = $student->save();
 
 
@@ -95,8 +97,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+        $cities = City::all();
         $student = Student::find($id);//DB::table('students')->where('id',$id)->first();
-        return view('students.edit',compact('student'));
+        return view('students.edit',compact('student','cities'));
     }
 
     /**
@@ -114,7 +117,7 @@ class StudentController extends Controller
             'roll_no' => "required | numeric",
             'email' => "required",
             'mobile' => "required",
-            'city' => "required"]);
+            'city_id' => "required"]);
             
         /*$flag = DB::table('students')->where('id',$id)->update([
             'roll_no'=>$request->roll_no,
@@ -153,6 +156,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
+        return $id;
         $flag = Student::find($id)->delete();
         //DB::table('students')->where('id',$id)->delete();
 

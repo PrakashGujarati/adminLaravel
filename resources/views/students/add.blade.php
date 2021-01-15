@@ -71,8 +71,12 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">City</label>
-                    <input type="text" class="form-control" name="city" placeholder="Enter City">
-                    @error('city')
+                    <select name="city_id" id="city_id" class="form-control">
+                    @foreach($cities as $city)
+                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    @endforeach
+                    </select>
+                    @error('city_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>                  

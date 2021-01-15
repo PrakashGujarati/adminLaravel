@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Students</h1>
+            <h1>City</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Students</li>
+              <li class="breadcrumb-item active">City</li>
             </ol>
           </div>
         </div>
@@ -30,7 +30,7 @@
                 <h3 class="card-title">Create
                 
                 </h3>
-                <a href="{{route('student.create')}}"><button class="btn btn-sm btn-warning float-right">Add</button></a>
+                <a href="{{route('city.create')}}"><button class="btn btn-sm btn-warning float-right">Add</button></a>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -39,30 +39,22 @@
                  <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Roll</th>
+                      <th>Id</th>
                       <th>Name</th>
-                      <th>Enrollment</th>                      
-                      <th>Email</th>
-                      <th>Mobile</th>
-                      <th>City</th>
                       <th style="width: 40px">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($students as $student)
+                    @foreach($cities as $city)
                     <tr>
-                      <td><p>{{$student->roll_no}}</p></td>
-                      <td><p>{{$student->name}}</p></td>
-                      <td><p>{{$student->enrollment_no}}</p></td>
-                      <td><p>{{$student->email}}</p></td>
-                      <td><p>{{$student->mobile}}</p></td>
-                      <td><p>{{$student->city->name}}</p></td>
+                      <td><p>{{$city->id}}</p></td>
+                      <td><p>{{$city->name}}</p></td>
                       <td>
-                      <a href="{{route('student.edit',$student->id)}}"><button type="button" class="btn btn-info btn-sm">Edit</button></a>
-                      <form action="{{route('student.destroy',$student->id)}}" method="POST">
+                      <a href="{{route('city.edit',$city->id)}}"><button type="button" class="btn btn-info btn-sm">Edit</button></a>
+                      <form method="post" action="{{route('city.destroy',$city->id)}}">
                       @csrf
                       @method("DELETE")
-                      <button class="btn btn-danger btn-sm">Dele</button>
+                      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                       </form>
                       </td>
                     </tr>

@@ -50,7 +50,22 @@
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{{route('city.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                City               
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('subject.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Subject               
+              </p>
+            </a>
+          </li>
           
         </ul>
       </nav>

@@ -18,4 +18,7 @@ Route::get('/', function () {
 });
 Route::get('/test','TestController@index');
 Route::resource('student','StudentController');
+Route::resource('city','CityController');
+Route::resource('subject','SubjectController');
+
 
