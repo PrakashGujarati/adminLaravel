@@ -22,6 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('mobile',14);
             $table->string('email',100);
             $table->foreignId('city_id');
+            $table->foreignId('idcard_id');
             $table->timestamps();
         });
     }

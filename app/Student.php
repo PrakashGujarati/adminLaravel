@@ -12,4 +12,9 @@ class Student extends Model
     {
         return $this->belongsTo(City::class,'city_id');
     }
+
+    public function idcard()
+    {
+        return $this->belongsTo(Idcard::class,'idcard_id');
+    }
 }
