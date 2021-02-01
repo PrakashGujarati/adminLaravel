@@ -17,4 +17,9 @@ class Student extends Model
     {
         return $this->belongsTo(Idcard::class,'idcard_id');
     }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'student_subject');
+    }
 }

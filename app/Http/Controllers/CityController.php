@@ -13,7 +13,7 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       
         $cities = City::orderBy('name', 'asc')->get();        
         return view('city.view',compact('cities'));
     }

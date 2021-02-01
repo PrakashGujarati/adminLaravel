@@ -45,6 +45,7 @@
                       <th>Email</th>
                       <th>Mobile</th>
                       <th>City</th>
+                      <th>ID</th>
                       <th style="width: 40px">Action</th>
                     </tr>
                   </thead>
@@ -57,6 +58,7 @@
                       <td><p>{{$student->email}}</p></td>
                       <td><p>{{$student->mobile}}</p></td>
                       <td><p>{{$student->city->name}}</p></td>
+                      <td><p>{{$student->idcard->number}}</p></td>
                       <td>
                       <a href="{{route('student.edit',$student->id)}}"><button type="button" class="btn btn-info btn-sm">Edit</button></a>
                       <form action="{{route('student.destroy',$student->id)}}" method="POST">

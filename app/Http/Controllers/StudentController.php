@@ -15,8 +15,8 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $students = Student::with('city')->orderBy('id', 'asc')->get();//DB::table('students')->get();
+    {        
+        $students = Student::with('city','idcard')->orderBy('id', 'asc')->get();//DB::table('students')->get();
         return view('students.view',compact('students'));
     }
 
@@ -48,16 +48,16 @@ class StudentController extends Controller
             'city_id' => "required"]);
 
         //return $request->all();
-        //$flag = Student::create($request->all());
+        $flag = Student::create($request->all());
 
-        $student = new Student;
+        /*$student = new Student;
         $student->enrollment_no = $request->enrollment_no;
         $student->name = $request->name;
         $student->roll_no = $request->roll_no;
         $student->email = $request->email;
         $student->mobile = $request->mobile;
         $student->city_id = $request->city_id;
-        $flag = $student->save();
+        $flag = $student->save();*/
 
 
         /*DB::table('students')->insert([
