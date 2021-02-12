@@ -22,4 +22,14 @@ class Student extends Model
     {
         return $this->belongsToMany(Subject::class, 'student_subject');
     }
+
+    public function getNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = "MScIT Student ".$value;
+    }
 }

@@ -9,6 +9,12 @@ use App\City;
 
 class StudentController extends Controller
 {
+
+    public function __construct()
+    {
+        //$this->middleware('auth')->only(['index','create','store']);
+        //$this->middleware('auth')->except(['index','create','store']);
+    }
     /**
      * Display a listing of the resource.
      *

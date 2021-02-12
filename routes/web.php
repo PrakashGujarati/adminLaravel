@@ -17,8 +17,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('student','StudentController');
-Route::resource('city','CityController');
-Route::resource('subject','SubjectController');
+
+Route::get('test','TestController@index')->middleware('age');
 
 
+
+Route::group(["middleware"=>"auth"],function(){
+    Route::resource('student','StudentController');    
+    Route::resource('city','CityController');
+    Route::resource('subject','SubjectController');
+});
+
+Route::resource('employee','EmployeeController'); 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

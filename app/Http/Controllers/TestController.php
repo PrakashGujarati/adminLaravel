@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Student;
+
 
 class TestController extends Controller
 {
     public function index()
     {
-        return dirname(__FILE__);
+
+/*        $student = Student::find(3);
+        //$student->subjects()->attach([1,2,3]);
+        //$student->subjects()->detach([1,2,3]);
+        $student->subjects()->sync([3]);*/
+
+
+        return "success";        
+        //return dirname(__FILE__);
         //return view('form');
         //1. Retrive all records
         //$orders = DB::table('orders')->get();
